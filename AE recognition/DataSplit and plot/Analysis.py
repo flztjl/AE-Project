@@ -24,6 +24,6 @@ def signal_processing():
 
 """comment module if don't need"""
 
-data_analysis()
+# data_analysis()
 signal_processing()
 # auto_extraction()

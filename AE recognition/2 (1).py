@@ -1,16 +1,18 @@
-import librosa
+import cv2
 import numpy as np
-from scipy import signal
-from mayavi import mlab
 
-# Generate some example data
-t = np.linspace(0, 1, 1000, endpoint=False)
-x = signal.square(2 * np.pi * 5 * t)
-frequencies = np.arange(1, 100, 2)
-wavelet = signal.morlet2(50, 0.8, w=5.0)
-wp = signal.cwt(x, signal.morlet2, frequencies)
+# 设置棋盘的尺寸
+width, height = 2100, 2970  # A1纸的尺寸，单位为毫米
+square_size = 210  # 棋盘格的尺寸，单位为毫米
 
-# Plot the wavelet packet transform
-mlab.mesh(np.log2(frequencies), np.arange(wp.shape[1]), np.abs(wp), colormap="jet")
-mlab.axes(xlabel='Frequency (log2)', ylabel='Node', zlabel='Amplitude')
-mlab.show()
+# 创建一个全白色的图像
+image = np.ones((height, width), dtype=np.uint8) * 255
+
+# 用黑色填充棋盘格
+for i in range(0, height, square_size * 2):
+    for j in range(0, width, square_size * 2):
+        image[i:i+square_size, j:j+square_size] = 0
+        image[i+square_size:i+square_size*2, j+square_size:j+square_size*2] = 0
+
+# 保存图像
+cv2.imwrite('chessboard_A1.png', image)

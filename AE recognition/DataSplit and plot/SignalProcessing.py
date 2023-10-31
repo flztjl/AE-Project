@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from scipy.fftpack import fft
 from scipy import signal
-import pywt
+# import pywt
 
 
 # def extract_integer(filename):
@@ -17,7 +17,7 @@ def signal_processing(output_path_sensor, sensor_num):
     """cancel data shift and read split file"""
     dir_list = os.listdir(output_path_sensor)  # dir is your directory path
     # dir_list = sorted(os.listdir(output_path_sensor), key=extract_integer)
-    for i in range(0, len(dir_list) - 1):
+    for i in range(72, 200): # len(dir_list) - 1
         # if filename == 'plot':
         #     continue
         # if filename == dir_list[len(dir_list) - 1]:
@@ -68,11 +68,11 @@ def signal_processing(output_path_sensor, sensor_num):
         for j in range(0, count):
             split_signal = acoustic_data[
                            int(np.fix(j / count * sampling_rate)): int(np.fix((j + 1) / count * sampling_rate))]
-            xpt_start = j / count + i
+            xpt_start = (j / count) + i
             xpt_end = (j + 1) / count + i
             pt_step = 1 / sampling_rate
             # str1 = 'Signal ' + str('%.2f' % xpt_start) + ' to ' + str(xpt_end) + ' sec'
-            fig_title = 'Signal ' + str(xpt_start) + ' to ' + str(xpt_end) + ' sec'
+            fig_title = 'Signal ' + "{:.2f}".format(xpt_start) + ' to ' + str(xpt_end) + ' sec'
             time_sequence = np.arange(float(xpt_start), float(xpt_end), pt_step)
             print(xpt_start, xpt_end, pt_step)  # prev_data = np.ones(int(sampling_rate / (2 * count)))
 

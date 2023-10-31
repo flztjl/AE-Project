@@ -3,17 +3,15 @@ import os
 from nptdms import TdmsFile
 
 
-file_name = 'test3'
+file_name = '2nd defect at web-40db'
 task_ID = 'Task 1'
 
-rawfile_path = '/media/lj/MachineLearning/AE recognition/Data/Pencil lead/Pencil lead break/optical test/newtest2/'\
-               + file_name + '.tdms'
+rawfile_path = '/Volumes/Extreme SSD/2023-09-08/train/' + file_name + '.tdms'
 
 # D:/Google Drive/Colab Notebooks/AE recognition
 # /Users/David/Google Drive/Colab Notebooks/AE recognition
 
-output_path_sensor1 = '/media/lj/MachineLearning/AE recognition/Data/Pencil lead/Pencil lead break/optical ' \
-                      'test/newtest2/' + file_name + '/'
+output_path_sensor1 = ('/Volumes/Extreme SSD/2023-09-08/train/' + file_name + '/')
 # output_path_sensor2 = '/media/lj/MachineLearning/AE recognition/Data/Pencil lead/Pencil lead break/plb-museum/1st ' \
 #                      'day/' + file_name + '/2/'
 # # output_path_sensor3 = '/media/lj/AE Project/Archives/plb-museum/plb field test/4th/' + file_name + '/3/'
@@ -37,7 +35,7 @@ def data_split(filename):
         # channel2 = tdms_file[task_ID]['Untitled 1']
         # channel3 = tdms_file[task_ID]['Untitled 2']
         # channel4 = tdms_file[task_ID]['Untitled 3']
-        # Access dictionary  of properties
+        # Access dictionary of properties
         # properties = channel.properties
         # Access numpy array of data for channel:
         data1 = channel1[:]
